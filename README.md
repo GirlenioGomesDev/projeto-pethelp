@@ -55,6 +55,47 @@ python manage.py migrate
 
 As imagens enviadas pelos usuarios ficam em `media/`, que tambem fica fora do Git. A pasta e mantida no repositorio com `media/.gitkeep`.
 
+## Deploy No PythonAnywhere Com SQLite
+
+O PythonAnywhere e a opcao recomendada para hospedar este projeto no plano free mantendo SQLite.
+
+No console Bash do PythonAnywhere:
+
+```bash
+git clone https://github.com/GirlenioGomesDev/projeto-pethelp.git
+cd projeto-pethelp
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py collectstatic --no-input
+```
+
+No painel Web do PythonAnywhere, crie um app Django e configure:
+
+- Source code: `/home/seuusuario/projeto-pethelp`
+- Working directory: `/home/seuusuario/projeto-pethelp`
+- Static URL: `/static/`
+- Static directory: `/home/seuusuario/projeto-pethelp/staticfiles`
+- Media URL: `/media/`
+- Media directory: `/home/seuusuario/projeto-pethelp/media`
+
+No arquivo WSGI do PythonAnywhere, aponte para:
+
+```python
+from pethelp.wsgi import application
+```
+
+Se quiser fixar as variaveis no WSGI, use:
+
+```python
+import os
+
+os.environ['DEBUG'] = 'False'
+os.environ['ALLOWED_HOSTS'] = 'seuusuario.pythonanywhere.com'
+os.environ['CSRF_TRUSTED_ORIGINS'] = 'https://seuusuario.pythonanywhere.com'
+```
+
 ## Deploy No Render
 
 O projeto inclui `render.yaml` para criar um Web Service Python no plano free do Render, ligado a um Postgres free.
