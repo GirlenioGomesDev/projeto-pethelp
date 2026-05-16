@@ -54,3 +54,18 @@ python manage.py migrate
 ## Uploads
 
 As imagens enviadas pelos usuarios ficam em `media/`, que tambem fica fora do Git. A pasta e mantida no repositorio com `media/.gitkeep`.
+
+## Deploy No Render
+
+O projeto inclui `render.yaml` para criar um Web Service Python no Render.
+
+Configuracoes principais:
+
+- Build Command: `bash build.sh`
+- Start Command: `python manage.py migrate && gunicorn pethelp.wsgi:application`
+- Python: `3.12.10`
+- Static files: WhiteNoise + `collectstatic`
+- SQLite: `SQLITE_PATH=/var/data/db.sqlite3`
+- Uploads: `MEDIA_ROOT=/var/data/media`
+
+Para manter o SQLite e os uploads entre deploys, use um disco persistente no Render montado em `/var/data`. Sem disco persistente, o banco e as imagens podem ser perdidos quando o servico reiniciar ou redeployar.
