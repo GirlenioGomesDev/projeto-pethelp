@@ -57,15 +57,15 @@ As imagens enviadas pelos usuarios ficam em `media/`, que tambem fica fora do Gi
 
 ## Deploy No Render
 
-O projeto inclui `render.yaml` para criar um Web Service Python no Render.
+O projeto inclui `render.yaml` para criar um Web Service Python no plano free do Render, ligado a um Postgres free.
 
 Configuracoes principais:
 
 - Build Command: `bash build.sh`
-- Start Command: `python manage.py migrate && gunicorn pethelp.wsgi:application`
+- Pre-Deploy Command: `python manage.py migrate`
+- Start Command: `gunicorn pethelp.wsgi:application`
 - Python: `3.12.10`
 - Static files: WhiteNoise + `collectstatic`
-- SQLite: `SQLITE_PATH=/var/data/db.sqlite3`
-- Uploads: `MEDIA_ROOT=/var/data/media`
+- Banco: `DATABASE_URL` vindo do Postgres `pethelp-db`
 
-Para manter o SQLite e os uploads entre deploys, use um disco persistente no Render montado em `/var/data`. Sem disco persistente, o banco e as imagens podem ser perdidos quando o servico reiniciar ou redeployar.
+No plano free, o Render nao permite disco persistente em Web Services. Por isso, o banco usa Postgres free em vez de SQLite. Uploads em `media/` continuam em disco local temporario e podem ser perdidos quando o servico reiniciar, redeployar ou sair do ar por inatividade. Para uploads permanentes no free, use um storage externo, como Cloudinary ou S3 compativel.
