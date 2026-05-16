@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-title">
+  <div>
+    <span class="eyebrow">Publicacoes</span>
+    <h1>{{ titulo }}</h1>
+    {% if categoria == 'perdido' %}
+      <p>Pets que estao sendo procurados por suas familias. Se reconhecer algum, abra os detalhes e entre em contato.</p>
+    {% endif %}
+    {% if categoria == 'encontrado' %}
+      <p>Animais encontrados aguardando reconhecimento. Compartilhe com pessoas do bairro.</p>
+    {% endif %}
+    {% if categoria == 'adocao' %}
+      <p>Pets disponiveis para adocao responsavel e novas historias de cuidado.</p>
+    {% endif %}
+  </div>
+  <a class="btn btn-primary" href="{% url 'cadastrar_publicacao' %}?categoria={{ categoria }}">Compartilhar aqui</a>
+</section>
+
+<nav class="filter-tabs" aria-label="Categorias">
+  <a class="{% if categoria == 'perdido' %}active{% endif %}" href="{% url 'pets_perdidos' %}">Perdidos</a>
+  <a class="{% if categoria == 'encontrado' %}active{% endif %}" href="{% url 'patinhas_encontradas' %}">Encontrados</a>
+  <a class="{% if categoria == 'adocao' %}active{% endif %}" href="{% url 'adotar_focinho' %}">Adocao</a>
+  <a class="{% if request.GET.status == 'ativo' %}active soft-active{% endif %}" href="?status=ativo">Ativos</a>
+  <a class="{% if request.GET.status == 'resolvido' %}active soft-active{% endif %}" href="?status=resolvido">Resolvidos</a>
+</nav>
+
+<section class="cards">
+  {% for publicacao in publicacoes %}
+    {% include 'animais/partials/card.html' %}
+  {% empty %}
+    <div class="empty">
+      <h2>Nenhuma publicacao por aqui ainda</h2>
+      <p>Seja a primeira pessoa a compartilhar nesta categoria.</p>
+      <a class="btn btn-primary" href="{% url 'cadastrar_publicacao' %}?categoria={{ categoria }}">Publicar agora</a>
+    </div>
+  {% endfor %}
+</section>
+{% endblock %}

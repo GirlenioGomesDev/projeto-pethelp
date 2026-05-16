@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="form-page compact">
+  <div class="form-card small-form">
+    <span class="eyebrow">Comunidade PetHelp</span>
+    <h1>Criar conta</h1>
+    <p class="hint">Com uma conta voce pode publicar, acompanhar e remover anuncios quando eles forem resolvidos.</p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-primary" type="submit">Criar minha conta</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

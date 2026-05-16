@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="form-page compact">
+  <div class="form-card small-form danger-zone">
+    <span class="eyebrow">Confirmacao</span>
+    <h1>Remover publicacao?</h1>
+    <p class="hint">Esta acao remove o anuncio do site. Use quando o pet foi encontrado, adotado ou a postagem nao for mais necessaria.</p>
+    <form method="post">
+      {% csrf_token %}
+      <div class="action-row">
+        <button class="btn btn-danger" type="submit">Sim, remover</button>
+        <a class="btn btn-ghost" href="{% url 'minhas_publicacoes' %}">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

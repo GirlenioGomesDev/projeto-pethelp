@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="detail-layout">
+  <div class="detail-photo">
+    <img src="{{ publicacao.foto.url }}" alt="Foto do pet {{ publicacao.nome|default:'sem nome' }}">
+  </div>
+
+  <article class="detail-panel">
+    <span class="badge {{ publicacao.categoria }}">{{ publicacao.get_categoria_display }}</span>
+    {% if publicacao.resolvido %}<span class="badge resolved">Resolvido</span>{% endif %}
+    <h1>{{ publicacao.nome|default:'Pet sem nome informado' }}</h1>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <small>Tipo</small>
+        <strong>{{ publicacao.tipo_animal|default:'Nao informado' }}</strong>
+      </div>
+      <div class="info-box">
+        <small>Bairro</small>
+        <strong>{{ publicacao.bairro|default:'Nao informado' }}</strong>
+      </div>
+      <div class="info-box">
+        <small>Contato</small>
+        <strong>{{ publicacao.contato|default:'Nao informado' }}</strong>
+      </div>
+      <div class="info-box">
+        <small>Data da perda</small>
+        <strong>{{ publicacao.data_perda|date:'d/m/Y'|default:'Nao se aplica' }}</strong>
+      </div>
+      <div class="info-box">
+        <small>Idade / porte</small>
+        <strong>{{ publicacao.idade|default:'Idade nao informada' }}{% if publicacao.porte %} - {{ publicacao.get_porte_display }}{% endif %}</strong>
+      </div>
+      <div class="info-box">
+        <small>Publicado em</small>
+        <strong>{{ publicacao.criado_em|date:'d/m/Y H:i' }}</strong>
+      </div>
+    </div>
+
+    <div class="text-block">
+      <h2>Caracteristicas</h2>
+      <p>{{ publicacao.caracteristicas|default:'Nenhuma caracteristica informada.' }}</p>
+    </div>
+    <div class="text-block">
+      <h2>Descricao</h2>
+      <p>{{ publicacao.descricao|default:'Nenhuma descricao informada.' }}</p>
+    </div>
+
+    <div class="action-row">
+      <a class="btn btn-ghost" href="javascript:history.back()">Voltar</a>
+      {% if user.is_authenticated and user == publicacao.usuario or user.is_superuser %}
+        <a class="btn btn-muted" href="{% url 'editar_publicacao' publicacao.pk %}">Editar</a>
+        <a class="btn btn-soft" href="{% url 'alternar_status_publicacao' publicacao.pk %}">{% if publicacao.resolvido %}Reabrir{% else %}Marcar resolvida{% endif %}</a>
+        <a class="btn btn-danger" href="{% url 'apagar_publicacao' publicacao.pk %}">Remover publicacao</a>
+      {% endif %}
+    </div>
+  </article>
+</section>
+{% endblock %}

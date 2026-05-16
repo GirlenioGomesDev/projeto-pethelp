@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="form-page">
+  <div class="form-card">
+    <span class="eyebrow">{% if modo == 'editar' %}Editar publicacao{% else %}Nova publicacao{% endif %}</span>
+    <h1>{% if modo == 'editar' %}Atualizar informacao{% else %}Compartilhar informacao{% endif %}</h1>
+    <p class="hint">Inclua uma foto, tipo do animal, bairro e contato. Para adocao, a imagem e obrigatoria e as demais informacoes podem ser preenchidas aos poucos.</p>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="action-row">
+        <button class="btn btn-primary" type="submit">{% if modo == 'editar' %}Salvar alteracoes{% else %}Publicar Pet{% endif %}</button>
+        <a class="btn btn-ghost" href="{% url 'home' %}">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

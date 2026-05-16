@@ -1,0 +1,16 @@
+<article class="pet-card">
+  <div class="pet-img-wrap">
+    <img src="{{ publicacao.foto.url }}" alt="Foto do pet">
+  </div>
+  <div class="pet-card-body">
+    <span class="badge {{ publicacao.categoria }}">{{ publicacao.get_categoria_display }}</span>
+    <h3>{{ publicacao.nome|default:'Pet sem nome informado' }}</h3>
+    <div class="pet-meta">
+      <span class="meta-pill">📍 {{ publicacao.bairro|default:'Bairro não informado' }}</span>
+      {% if publicacao.contato %}<span class="meta-pill">📞 Contato disponível</span>{% endif %}
+    </div>
+    <p>{{ publicacao.caracteristicas|default:publicacao.descricao|default:'Sem descrição informada.'|truncatechars:90 }}</p>
+    <p class="muted" style="margin:8px 0 0;font-size:.95rem">Se reconhecer, clique em "Ver detalhes" e entre em contato com o anunciante.</p>
+    <a class="btn soft" href="{% url 'detalhe_publicacao' publicacao.pk %}">Ver detalhes</a>
+  </div>
+</article>

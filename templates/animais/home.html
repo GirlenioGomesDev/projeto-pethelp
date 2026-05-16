@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">🐾 Plataforma comunitária de auxílio a pets</p>
+    <h1>Ajude um pet a <mark>voltar para casa</mark> ou encontrar uma família acolhedora.</h1>
+    <p class="subtitle">Aqui vizinhos e protetores se unem para reencontrar pets, compartilhar informações seguras e apoiar adoções responsáveis. Visualizar publicações é aberto; login é necessário apenas para publicar ou gerenciar suas próprias postagens.</p>
+    <div class="actions">
+      <a class="btn" href="{% url 'cadastrar_publicacao' %}?categoria=perdido">Cadastrar Pet Perdido</a>
+      <a class="btn ghost" href="{% url 'patinhas_encontradas' %}">Ver Patinhas Encontradas</a>
+    </div>
+    <div class="trust-row">
+      <span class="trust-pill">📍 Buscas por bairro e horário</span>
+      <span class="trust-pill">📸 Foto e descrição útil</span>
+      <span class="trust-pill">🤝 Comunidade que ajuda</span>
+    </div>
+  </div>
+  <div class="pet-illustration" aria-label="Ilustração de pet">
+    <div class="blob one"></div><div class="blob two"></div>
+    <div class="floating-card a">📢 Publique rápido</div>
+    <div class="floating-card b">🏡 Adoção responsável</div>
+    <div class="floating-card c">✅ Ajuda comunitária</div>
+    <div class="pet-face">
+      <div class="ear left"></div><div class="ear right"></div>
+      <div class="eye left"></div><div class="eye right"></div>
+      <div class="nose"></div><div class="mouth">⌣</div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <article><div class="stat-icon">🔎</div><div><strong>{{ total_perdidos }}</strong><span>Pets perdidos</span></div></article>
+  <article><div class="stat-icon">🤲</div><div><strong>{{ total_encontrados }}</strong><span>Patinhas encontradas</span></div></article>
+  <article><div class="stat-icon">💚</div><div><strong>{{ total_adocao }}</strong><span>Para adoção</span></div></article>
+</section>
+
+<section class="quick-actions">
+  <a href="{% url 'cadastrar_publicacao' %}?categoria=perdido" class="feature-card">
+    <div class="icon">🔎</div><h2>Cadastrar Pet Perdido</h2>
+    <p>Foto, nome, características, contato, dia da perda e bairro.</p>
+  </a>
+  <a href="{% url 'cadastrar_publicacao' %}?categoria=encontrado" class="feature-card">
+    <div class="icon">🤲</div><h2>Patinhas Encontradas</h2>
+    <p>Encontrou um animal na rua? Publique para o dono reconhecer.</p>
+  </a>
+  <a href="{% url 'cadastrar_publicacao' %}?categoria=adocao" class="feature-card">
+    <div class="icon">💚</div><h2>Adotar um Focinho</h2>
+    <p>Cadastre ou veja animais esperando uma nova família.</p>
+  </a>
+  <a href="{% url 'minhas_publicacoes' %}" class="feature-card">
+    <div class="icon">🗂️</div><h2>Minhas Publicações</h2>
+    <p>Área protegida para apagar suas postagens quando resolver.</p>
+  </a>
+</section>
+
+{% if recentes %}
+<section class="page-title"><div><h1>Publicações recentes</h1><p>Veja os últimos pets cadastrados na comunidade.</p></div></section>
+<section class="cards">
+  {% for p in recentes %}{% include 'animais/partials/card.html' with publicacao=p %}{% endfor %}
+</section>
+{% endif %}
+{% endblock %}

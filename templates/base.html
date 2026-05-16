@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PetHelp — comunidade para localizar pets perdidos, publicar encontrados e facilitar adoções locais.">
+  <title>PetHelp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+<header class="topbar">
+  <div class="nav-wrap">
+    <a class="brand" href="{% url 'home' %}"><span>🐾</span> PetHelp</a>
+    <nav>
+      <a class="nav-link" href="{% url 'home' %}">Início</a>
+      <a class="nav-link" href="{% url 'pets_perdidos' %}">Pets Perdidos</a>
+      <a class="nav-link" href="{% url 'patinhas_encontradas' %}">Patinhas Encontradas</a>
+      <a class="nav-link" href="{% url 'adotar_focinho' %}">Adotar um Focinho</a>
+      <form action="{% url 'home' %}" method="get" class="search-form" role="search">
+        <input name="q" type="search" placeholder="Procurar por nome ou bairro" aria-label="Pesquisar publicações">
+        <button class="btn small ghost" type="submit">Buscar</button>
+      </form>
+      {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'minhas_publicacoes' %}">Minhas Publicações</a>
+        <a href="{% url 'cadastrar_publicacao' %}" class="btn small">+ Publicar</a>
+        <form action="{% url 'logout' %}" method="post" class="logout-form">{% csrf_token %}<button>Sair</button></form>
+      {% else %}
+        <a href="{% url 'login' %}" class="btn small">Entrar para publicar</a>
+      {% endif %}
+    </nav>
+  </div>
+</header>
+
+{% if messages %}
+<section class="messages">
+  {% for message in messages %}<p class="message {{ message.tags }}">{{ message }}</p>{% endfor %}
+</section>
+{% endif %}
+
+<main id="main-content">
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="nav-wrap footer-grid">
+    <div class="foot-about">
+      <h3>Sobre o PetHelp</h3>
+      <p>PetHelp é uma plataforma comunitária: vizinhos ajudam vizinhos a encontrar e cuidar de pets. Publique rapidamente, colabore com informações reais e ajude um amigo de quatro patas a voltar para casa.</p>
+    </div>
+    <div class="foot-links">
+      <h4>Links úteis</h4>
+      <ul>
+        <li><a href="{% url 'pets_perdidos' %}">Pets Perdidos</a></li>
+        <li><a href="{% url 'patinhas_encontradas' %}">Patinhas Encontradas</a></li>
+        <li><a href="{% url 'adotar_focinho' %}">Adoção</a></li>
+      </ul>
+    </div>
+    <div class="foot-contact">
+      <h4>Contato</h4>
+      <p>Tem uma sugestão ou encontrou um pet colaborativo? Entre em contato pelo e-mail: <a href="mailto:contato@pethelp.local">contato@pethelp.local</a></p>
+    </div>
+  </div>
+  <div class="copyright">© {% now "Y" %} PetHelp — Feito com 💛 pela comunidade</div>
+</footer>
+</body>
+</html>
