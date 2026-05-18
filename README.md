@@ -2,127 +2,201 @@
 
 # PetHelp
 
-### Plataforma comunitária para pets perdidos, encontrados e adoção responsável
+### Tecnologia para aproximar famílias, comunidades e pets que precisam de ajuda.
 
-O **PetHelp** é uma aplicação web desenvolvida com **Python, Django e SQLite**, criada para aproximar pessoas que perderam seus animais, divulgar pets encontrados e apoiar adoções responsáveis.
+O **PetHelp** é uma aplicação web construída com **Python, Django e SQLite** para centralizar publicações de pets perdidos, animais encontrados e adoções responsáveis em uma experiência simples, acolhedora e funcional.
+
+<br>
 
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-5%2B-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-Markup-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-Modern%20UI-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-N%C3%A3o%20utilizado-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
-![License](https://img.shields.io/badge/License-N%C3%A3o%20definida-lightgrey?style=for-the-badge)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-Ready-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Em%20desenvolvimento-2EA44F?style=for-the-badge)
+![Deploy](https://img.shields.io/badge/Deploy-Ready-blue?style=for-the-badge&logo=render&logoColor=white)
+
+<br>
+
+```text
+🐾 PetHelp
+Um espaço digital para reencontros, cuidado comunitário e adoção responsável.
+```
 
 </div>
 
 ---
 
-## Sobre o Projeto
+## Introdução
 
-Quem já perdeu um pet sabe que os primeiros minutos parecem longos demais. A família procura nas ruas, compartilha fotos em grupos, pergunta aos vizinhos e tenta organizar informações que, muitas vezes, ficam espalhadas.
+Perder um pet não é apenas perder um animal de estimação. Para muitas famílias, é perder uma parte da rotina, da casa e da memória afetiva construída todos os dias. A busca costuma acontecer de forma espalhada: mensagens em grupos, cartazes improvisados, postagens soltas em redes sociais e informações difíceis de acompanhar.
 
-O **PetHelp** nasceu dessa necessidade: transformar a busca por animais perdidos em um processo mais claro, acessível e colaborativo. A plataforma permite que qualquer visitante consulte publicações, filtre por bairro ou categoria e encontre rapidamente dados importantes, como foto, características e telefone de contato.
+O **PetHelp** nasce para organizar essa ajuda.
 
-Além de ajudar em reencontros, o sistema também abre espaço para pets encontrados e animais disponíveis para adoção responsável. A proposta é simples, mas poderosa: usar tecnologia para fortalecer redes locais de cuidado, aproximar pessoas e dar mais chances a animais que precisam de ajuda.
+A proposta é oferecer um ambiente onde pessoas possam publicar pets perdidos, divulgar animais encontrados e dar visibilidade a pets disponíveis para adoção. Em vez de depender apenas de mensagens perdidas no meio de conversas, a comunidade passa a ter um ponto central para consultar fotos, bairros, características e telefones de contato.
 
-Este projeto foi desenvolvido com foco em organização, usabilidade e propósito social. Ele une backend em Django, banco SQLite, autenticação de usuários, upload de imagens e uma interface responsiva com identidade visual acolhedora.
+Este projeto une tecnologia e propósito social. A aplicação foi pensada para ser acessível, direta e humana, porque em situações de busca ou adoção, cada detalhe importa: uma foto clara, uma descrição bem feita, um bairro informado corretamente e um contato disponível podem fazer diferença real.
 
 ---
 
-## Demonstração do Sistema
+## Demonstração Visual
 
-> Espaço reservado para imagens do projeto. Adicione os arquivos em uma pasta como `docs/screenshots/` e atualize os caminhos abaixo.
+> Espaço preparado para screenshots, gifs e previews do sistema.  
+> Sugestão: crie uma pasta `docs/screenshots/` e adicione as imagens reais da aplicação.
+
+### Preview das Telas
 
 | Home | Galeria de Pets | Detalhes do Pet |
 | --- | --- | --- |
-| `docs/screenshots/home.png` | `docs/screenshots/galeria.png` | `docs/screenshots/detalhe.png` |
+| ![Home](docs/screenshots/home.png) | ![Galeria](docs/screenshots/galeria.png) | ![Detalhes](docs/screenshots/detalhe.png) |
 
-| Login/Cadastro | Formulário de Pet | Área Minhas Publicações |
+| Login | Cadastro de Pet | Minhas Publicações |
 | --- | --- | --- |
-| `docs/screenshots/login.png` | `docs/screenshots/formulario.png` | `docs/screenshots/minhas-publicacoes.png` |
+| ![Login](docs/screenshots/login.png) | ![Cadastro de Pet](docs/screenshots/cadastro-pet.png) | ![Minhas Publicações](docs/screenshots/minhas-publicacoes.png) |
 
-Exemplo para inserir uma imagem real:
+### GIF de Navegação
 
 ```md
-![Home do PetHelp](docs/screenshots/home.png)
+![Demonstração do PetHelp](docs/screenshots/demo.gif)
 ```
 
 ---
 
 ## Funcionalidades
 
-- **Cadastro de usuários** com nome, e-mail e senha.
-- **Login, logout e controle de sessão** usando autenticação nativa do Django.
-- **Publicação de pets perdidos** com foto, bairro, data do desaparecimento, características e telefone.
-- **Publicação de pets encontrados** para facilitar o reconhecimento por famílias e tutores.
-- **Sistema de adoção** para divulgar pets que precisam de um novo lar.
-- **Upload de imagens** com armazenamento em `media/` e preview no formulário.
-- **Galeria de pets** em cards modernos, com visual de vitrine.
-- **Página “Ver Mais”** com todas as informações do pet e imagem em destaque.
-- **Filtros de busca** por nome, bairro e categoria.
-- **Área “Minhas Publicações”** para usuários autenticados.
-- **Edição e exclusão de posts** pelo dono da publicação.
-- **Controle de permissões**: apenas o autor ou um admin/staff pode editar ou excluir.
-- **Painel administrativo do Django** para gerenciar usuários, pets e moderação.
-- **Mensagens de sucesso e erro** para melhorar a experiência do usuário.
-- **Layout responsivo** para desktop, tablet e celular.
-- **Design humanizado** com paleta azul clara, branco, tons suaves e elementos visuais relacionados a pets.
+### Usuários
+
+- Cadastro de usuários com nome, e-mail e senha.
+- Login e logout com controle de sessão.
+- Autenticação usando recursos nativos do Django.
+- Acesso público para visitantes visualizarem publicações.
+- Acesso restrito para usuários logados cadastrarem e gerenciarem pets.
+
+### Publicações
+
+- Cadastro de pets perdidos.
+- Cadastro de animais encontrados.
+- Divulgação de pets para adoção responsável.
+- Upload de imagens dos pets.
+- Preview da imagem antes do envio.
+- Página individual com detalhes completos de cada publicação.
+- Busca por nome.
+- Busca por bairro.
+- Filtro por categoria.
+- Área **Minhas Publicações** para o usuário acompanhar seus registros.
+- Edição de publicações próprias.
+- Exclusão de publicações próprias.
+
+### Administração
+
+- Painel administrativo nativo do Django.
+- Gerenciamento de usuários.
+- Gerenciamento de pets cadastrados.
+- Moderação de publicações.
+- Permissão para administradores editarem ou excluírem qualquer publicação.
+
+### Segurança
+
+- Controle de permissões por usuário.
+- Apenas o dono da publicação pode editar ou excluir seu próprio conteúdo.
+- Administradores e staff possuem acesso ampliado para moderação.
+- Proteção CSRF nos formulários.
+- Senhas armazenadas com hash pelo sistema de autenticação do Django.
+- Separação entre visitantes, usuários autenticados e administradores.
+
+### Interface
+
+- Layout responsivo para desktop, tablet e celular.
+- Interface moderna com identidade visual clara e acolhedora.
+- Paleta baseada em azul claro, branco e tons suaves.
+- Cards de pets no estilo vitrine.
+- Mensagens de sucesso e erro.
+- Animações leves e interações com hover.
+- Organização visual pensada para uso simples por qualquer pessoa.
 
 ---
 
-## Tecnologias Utilizadas
+## Diferenciais do Sistema
 
-| Tecnologia | Uso no projeto |
+- **Propósito social real:** o sistema não é apenas um CRUD; ele resolve um problema emocional e comunitário.
+- **Foco em comunidade:** facilita a colaboração entre vizinhos, tutores, protetores e adotantes.
+- **Acessibilidade de uso:** visitantes conseguem visualizar publicações sem criar conta.
+- **Fluxo simples:** cadastro, busca e contato foram pensados para serem rápidos.
+- **Interface acolhedora:** o design evita aparência fria ou genérica.
+- **Organização das informações:** centraliza dados essenciais como foto, bairro, cidade, características e telefone.
+- **Base preparada para evoluir:** a estrutura permite adicionar mapa, notificações, paginação e status de resolução.
+
+---
+
+## Stack Tecnológica
+
+| Tecnologia | Finalidade |
 | --- | --- |
-| **Python** | Linguagem principal da aplicação |
-| **Django** | Framework backend, rotas, views, templates, autenticação e admin |
-| **SQLite** | Banco de dados principal do projeto |
-| **HTML5** | Estrutura das páginas |
-| **CSS3** | Interface responsiva, animações, cards e identidade visual |
-| **JavaScript** | Preview de imagem e pequenos comportamentos da interface |
-| **Pillow** | Suporte ao upload e manipulação de imagens no Django |
-| **WhiteNoise** | Entrega de arquivos estáticos em produção |
-| **Gunicorn** | Servidor WSGI para deploy |
-| **Bootstrap** | Não está sendo usado atualmente; o layout foi criado com CSS próprio |
+| **Python** | Linguagem principal do backend |
+| **Django** | Framework web usado para rotas, views, templates, autenticação e admin |
+| **SQLite** | Banco de dados principal em ambiente local |
+| **HTML5** | Estrutura semântica das páginas |
+| **CSS3** | Layout, responsividade, animações e identidade visual |
+| **Bootstrap** | Referência/compatibilidade visual; o layout atual usa CSS próprio |
+| **Pillow** | Suporte ao processamento e upload de imagens |
+| **Render** | Estrutura preparada para deploy com `render.yaml` |
 
 ---
 
-## Estrutura do Projeto
+## Estrutura de Pastas
 
 ```text
-PetHelp/
-├── accounts/              # Cadastro, login, logout e formulários de usuário
-├── animais/               # App legado preservado no repositório
-├── media/                 # Uploads enviados pelos usuários
-├── pethelp/               # Configurações principais do projeto Django
-├── pets/                  # App principal: model Pet, views, forms, urls e admin
-├── static/                # Arquivos CSS e JavaScript
-├── staticfiles/           # Arquivos estáticos coletados para produção
-├── templates/             # Templates HTML globais e por app
-├── db.sqlite3             # Banco SQLite local
-├── manage.py              # Utilitário de gerenciamento do Django
-├── requirements.txt       # Dependências do projeto
-└── README.md              # Documentação do projeto
+projeto-pethelp/
+├── accounts/                 # Autenticação, cadastro de usuários e rotas de conta
+├── animais/                  # App legado preservado no repositório
+├── media/                    # Uploads de imagens enviados pelos usuários
+├── pethelp/                  # Configurações principais do projeto Django
+│   ├── settings.py           # Configurações do projeto
+│   ├── urls.py               # Rotas globais
+│   ├── asgi.py               # Entrada ASGI
+│   └── wsgi.py               # Entrada WSGI
+├── pets/                     # App principal de publicações de pets
+│   ├── admin.py              # Configuração do Django Admin
+│   ├── forms.py              # Formulários do sistema
+│   ├── models.py             # Model Pet
+│   ├── urls.py               # Rotas do app pets
+│   └── views.py              # Views e regras de negócio
+├── static/                   # CSS e JavaScript
+│   ├── css/
+│   └── js/
+├── staticfiles/              # Arquivos estáticos coletados para produção
+├── templates/                # Templates HTML do projeto
+│   ├── accounts/
+│   ├── animais/
+│   ├── pets/
+│   └── base.html
+├── db.sqlite3                # Banco de dados SQLite local
+├── manage.py                 # CLI de gerenciamento do Django
+├── requirements.txt          # Dependências Python
+├── build.sh                  # Script de build/deploy
+├── render.yaml               # Configuração para deploy no Render
+└── README.md                 # Documentação do projeto
 ```
 
-### Pastas principais
+### Principais diretórios
 
-| Pasta/arquivo | Descrição |
+| Caminho | Descrição |
 | --- | --- |
-| `pethelp/` | Contém `settings.py`, `urls.py`, `wsgi.py` e `asgi.py` |
-| `accounts/` | Responsável por cadastro de usuário, login e logout |
-| `pets/` | App principal do sistema, com cadastro, galeria, detalhes e permissões |
-| `animais/` | Estrutura anterior do projeto, mantida como legado |
-| `templates/` | Páginas HTML usadas pelo Django |
-| `static/` | CSS e JavaScript da interface |
-| `media/` | Fotos enviadas no cadastro dos pets |
-| `db.sqlite3` | Banco de dados SQLite usado em ambiente local |
+| `pethelp/` | Núcleo de configuração do projeto Django |
+| `accounts/` | Cadastro, login, logout e formulários de usuário |
+| `pets/` | App principal responsável pelas publicações atuais |
+| `animais/` | App anterior mantido como referência/legado |
+| `templates/` | Páginas HTML renderizadas pelo Django |
+| `static/` | Arquivos CSS e JavaScript da interface |
+| `media/` | Fotos de pets enviadas pelos usuários |
+| `db.sqlite3` | Banco de dados local usado pelo SQLite |
+| `manage.py` | Comando central para migrations, servidor, admin e manutenção |
 
 ---
 
-## Como Rodar o Projeto no Windows
+## Instalação e Execução
+
+As instruções abaixo foram pensadas para **Windows**.
 
 ### 1. Clone o repositório
 
@@ -143,7 +217,7 @@ python -m venv venv
 .\venv\Scripts\activate
 ```
 
-Se estiver usando PowerShell e aparecer bloqueio de execução de scripts, rode:
+Se estiver usando PowerShell e houver bloqueio de execução de scripts, use:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
@@ -162,25 +236,29 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-### 6. Crie um usuário administrador
-
-```bash
-python manage.py createsuperuser
-```
-
-### 7. Inicie o servidor local
+### 6. Inicie o servidor
 
 ```bash
 python manage.py runserver
 ```
 
-Abra no navegador:
+Acesse no navegador:
 
 ```text
 http://127.0.0.1:8000/
 ```
 
-Painel administrativo:
+---
+
+## Criando um Administrador
+
+Para acessar o painel administrativo do Django, crie um superusuário:
+
+```bash
+python manage.py createsuperuser
+```
+
+Depois acesse:
 
 ```text
 http://127.0.0.1:8000/admin/
@@ -188,42 +266,52 @@ http://127.0.0.1:8000/admin/
 
 ---
 
-## Fluxo de Uso
+## Fluxo Principal da Aplicação
 
-1. O visitante acessa a home e navega pelas categorias.
-2. Ele pode visualizar pets perdidos, encontrados e disponíveis para adoção.
-3. Para cadastrar um pet, é necessário criar uma conta ou fazer login.
-4. Após o login, o usuário publica um pet com foto e informações de contato.
-5. O autor pode editar ou excluir a própria publicação.
-6. Admins podem moderar todos os registros pelo site ou pelo Django Admin.
+```text
+Visitante
+   └── Visualiza publicações
+   └── Filtra por nome, bairro ou categoria
+
+Usuário autenticado
+   └── Cadastra pet
+   └── Edita publicações próprias
+   └── Exclui publicações próprias
+   └── Acessa "Minhas Publicações"
+
+Administrador
+   └── Gerencia usuários
+   └── Modera publicações
+   └── Edita ou exclui qualquer post
+```
 
 ---
 
 ## Variáveis de Ambiente
 
-O projeto funciona localmente sem criar um arquivo `.env`, mas em produção é recomendado configurar:
+O projeto roda localmente sem configuração extra, mas em produção é recomendado definir:
 
-| Variável | Descrição |
+| Variável | Finalidade |
 | --- | --- |
 | `SECRET_KEY` | Chave secreta do Django |
-| `DEBUG` | Use `False` em produção |
-| `ALLOWED_HOSTS` | Domínios autorizados, separados por vírgula |
-| `CSRF_TRUSTED_ORIGINS` | Origens HTTPS confiáveis |
-| `SQLITE_PATH` | Caminho opcional para o banco SQLite |
-| `MEDIA_ROOT` | Caminho opcional para uploads |
+| `DEBUG` | Deve ser `False` em produção |
+| `ALLOWED_HOSTS` | Lista de domínios permitidos |
+| `CSRF_TRUSTED_ORIGINS` | Origens confiáveis para CSRF |
+| `SQLITE_PATH` | Caminho opcional do banco SQLite |
+| `MEDIA_ROOT` | Caminho opcional para arquivos de upload |
 
 ---
 
 ## Deploy
 
-O projeto está preparado para deploy com:
+O projeto contém arquivos para facilitar deploy:
 
+- `build.sh`
+- `render.yaml`
 - `gunicorn`
 - `whitenoise`
-- `collectstatic`
-- SQLite
 
-Comandos comuns em produção:
+Comandos comuns em ambiente de produção:
 
 ```bash
 pip install -r requirements.txt
@@ -232,57 +320,48 @@ python manage.py collectstatic --no-input
 gunicorn pethelp.wsgi:application
 ```
 
-> Importante: se usar SQLite em produção, escolha uma hospedagem com disco persistente para não perder o banco `db.sqlite3` nem os arquivos enviados em `media/`.
+> Observação: ao usar SQLite em produção, o servidor precisa ter disco persistente. Sem isso, o banco `db.sqlite3` e os arquivos em `media/` podem ser perdidos em reinicializações ou novos deploys.
 
 ---
 
-## Administração
+## Qualidade e Organização
 
-O Django Admin permite:
+O projeto foi estruturado com separação clara entre:
 
-- Gerenciar usuários.
-- Gerenciar pets cadastrados.
-- Excluir publicações.
-- Moderar conteúdo.
-- Acompanhar registros pelo painel administrativo.
+- models;
+- forms;
+- views;
+- urls;
+- templates;
+- static files;
+- uploads;
+- autenticação;
+- regras de permissão.
 
-Para acessar:
-
-```text
-/admin/
-```
+Essa organização facilita manutenção, evolução do código e leitura por outros desenvolvedores.
 
 ---
 
-## Status do Projeto
+## Roadmap
 
-O PetHelp está em desenvolvimento, com as principais funcionalidades já implementadas:
+Melhorias futuras que podem elevar ainda mais o projeto:
 
-- Autenticação
-- Cadastro de pets
-- Galeria
-- Filtros
-- Upload de imagem
-- Permissões
-- Painel administrativo
-- Layout responsivo
-
-Melhorias futuras possíveis:
-
-- Paginação na galeria.
-- Sistema de status para marcar pets como resolvidos.
+- Paginação da galeria.
+- Status da publicação: ativo, resolvido ou adotado.
+- Integração com mapa por bairro/cidade.
 - Notificações por e-mail.
-- Geolocalização por mapa.
-- Página pública de contato.
+- Página de contato.
 - Testes automatizados.
+- API REST para integração com aplicativo mobile.
+- Dashboard administrativo com métricas.
 
 ---
 
-## Propósito
+## Licença
 
-Mais do que um CRUD, o PetHelp é um projeto sobre cuidado comunitário. A tecnologia aqui funciona como ponte: entre quem procura, quem encontrou, quem pode adotar e quem deseja ajudar.
+Este projeto está documentado como **MIT License**.
 
-Cada publicação pode representar um reencontro, uma adoção responsável ou uma nova chance para um animal que precisa de segurança.
+Recomendação: manter um arquivo `LICENSE` na raiz do repositório com o texto completo da licença MIT.
 
 ---
 
@@ -294,6 +373,9 @@ GitHub: [@GirlenioGomesDev](https://github.com/GirlenioGomesDev)
 
 ---
 
-## Licença
+<div align="center">
 
-Este projeto ainda não possui uma licença formal definida. Antes de reutilizar em produção ou distribuir, recomenda-se adicionar um arquivo `LICENSE` ao repositório.
+**PetHelp**  
+Um projeto feito para mostrar que tecnologia também pode cuidar.
+
+</div>
