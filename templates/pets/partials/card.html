@@ -1,0 +1,12 @@
+<article class="pet-card">
+  <a class="pet-image" href="{% url 'detalhe_pet' pet.pk %}">
+    <img src="{{ pet.foto.url }}" alt="Foto de {{ pet.nome }}">
+    <span class="badge {{ pet.categoria }}">{{ pet.get_categoria_display }}</span>
+  </a>
+  <div class="pet-card-body">
+    <h3>{{ pet.nome }}</h3>
+    <p class="card-place">{{ pet.bairro }} • {{ pet.cidade }}</p>
+    <p>{{ pet.caracteristicas|truncatechars:92 }}</p>
+    <a class="btn btn-ghost full" href="{% url 'detalhe_pet' pet.pk %}">Ver Mais</a>
+  </div>
+</article>

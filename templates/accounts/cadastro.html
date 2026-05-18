@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Cadastro | PetHelp{% endblock %}
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <div class="auth-visual">
+      <img src="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?auto=format&fit=crop&w=700&q=85" alt="Pessoa cuidando de um cachorro">
+    </div>
+    <div class="auth-form">
+      <span class="eyebrow">Comunidade PetHelp</span>
+      <h1>Criar cadastro</h1>
+      <p>Com uma conta, você publica pets perdidos, encontrados ou disponíveis para adoção responsável.</p>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary full" type="submit">Cadastrar</button>
+      </form>
+      <p class="form-note">Já tem conta? <a href="{% url 'login' %}">Fazer login</a></p>
+    </div>
+  </div>
+</section>
+{% endblock %}

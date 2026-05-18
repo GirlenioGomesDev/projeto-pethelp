@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}{{ titulo }} | PetHelp{% endblock %}
+{% block content %}
+<section class="page-hero compact paw-bg">
+  <span class="eyebrow">Galeria de pets</span>
+  <h1>{{ titulo }}</h1>
+  <p>Use os filtros para encontrar publicações por nome, bairro ou categoria. Visitantes podem visualizar tudo; usuários logados podem cadastrar e gerenciar suas próprias publicações.</p>
+</section>
+
+<form class="filters" method="get">
+  <label>
+    <span>Nome</span>
+    <input type="search" name="q" value="{{ request.GET.q }}" placeholder="Ex.: Mel, Thor, Luna">
+  </label>
+  <label>
+    <span>Bairro</span>
+    <input type="search" name="bairro" value="{{ request.GET.bairro }}" placeholder="Ex.: Centro">
+  </label>
+  <label>
+    <span>Categoria</span>
+    <select name="categoria">
+      <option value="">Todas</option>
+      <option value="perdido" {% if request.GET.categoria == 'perdido' or categoria_atual == 'perdido' %}selected{% endif %}>Perdido</option>
+      <option value="encontrado" {% if request.GET.categoria == 'encontrado' or categoria_atual == 'encontrado' %}selected{% endif %}>Encontrado</option>
+      <option value="adocao" {% if request.GET.categoria == 'adocao' or categoria_atual == 'adocao' %}selected{% endif %}>Adoção</option>
+    </select>
+  </label>
+  <button class="btn btn-primary" type="submit">Filtrar</button>
+  <a class="btn btn-ghost" href="{% url 'galeria_pets' %}">Limpar</a>
+</form>
+
+<section class="pet-grid">
+  {% for pet in pets %}
+    {% include 'pets/partials/card.html' %}
+  {% empty %}
+    <div class="empty-state">
+      <h3>Nenhum pet encontrado</h3>
+      <p>Tente outros termos ou cadastre uma nova publicação para movimentar a rede.</p>
+      <a class="btn btn-primary" href="{% url 'cadastrar_pet' %}">Cadastrar Pet</a>
+    </div>
+  {% endfor %}
+</section>
+{% endblock %}

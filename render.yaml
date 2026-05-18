@@ -4,7 +4,6 @@ services:
     runtime: python
     plan: free
     buildCommand: "bash build.sh"
-    preDeployCommand: "python manage.py migrate"
     startCommand: "gunicorn pethelp.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
@@ -17,13 +16,5 @@ services:
         value: ".onrender.com"
       - key: CSRF_TRUSTED_ORIGINS
         value: "https://*.onrender.com"
-      - key: DATABASE_URL
-        fromDatabase:
-          name: pethelp-db
-          property: connectionString
-
-databases:
-  - name: pethelp-db
-    plan: free
-    databaseName: pethelp
-    user: pethelp
+      - key: SQLITE_PATH
+        value: "/opt/render/project/src/db.sqlite3"

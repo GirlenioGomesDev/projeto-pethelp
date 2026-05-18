@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero-full paw-bg">
+  <div class="hero-content">
+    <div class="hero-copy">
+      <span class="eyebrow">Comunidade que cuida</span>
+      <h1>Bem-vindos ao PetHelp</h1>
+      <p>Um espaço criado para ajudar famílias a reencontrarem seus melhores amigos e dar uma nova chance para pets que precisam de um lar cheio de amor.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{% url 'cadastrar_pet' %}?categoria=perdido">Cadastrar Pet</a>
+        <a class="btn btn-ghost" href="{% url 'galeria_pets' %}">Ver Galeria</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=85" alt="Cachorro amigavel olhando para a camera">
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <article><strong>{{ total_perdidos }}</strong><span>pets perdidos</span></article>
+  <article><strong>{{ total_encontrados }}</strong><span>patinhas encontradas</span></article>
+  <article><strong>{{ total_adocao }}</strong><span>focinhos para adotar</span></article>
+</section>
+
+<section class="mission-section">
+  <div>
+    <span class="eyebrow">Nossa missão</span>
+    <h2>Reencontros mais rápidos, adoções mais conscientes.</h2>
+  </div>
+  <div class="mission-text">
+    <p>O PetHelp nasceu para ajudar pessoas a encontrarem seus animais perdidos e também incentivar a adoção responsável, conectando pets a novos lares cheios de carinho.</p>
+    <p>Aqui, cada publicação é tratada como uma história real: tem família preocupada, vizinhos atentos, protetores dedicados e animais que merecem segurança. Por isso a plataforma valoriza informações claras, fotos bem exibidas e contato direto, para que a ajuda chegue sem ruído e com respeito.</p>
+  </div>
+</section>
+
+<section class="category-grid">
+  <a class="category-card lost" href="{% url 'pets_perdidos' %}">
+    <span>🐶</span>
+    <h3>Pet Perdidos</h3>
+    <p>Procure por nome, bairro e características para ajudar uma família.</p>
+  </a>
+  <a class="category-card found" href="{% url 'patinhas_encontradas' %}">
+    <span>🐾</span>
+    <h3>Patinhas Encontradas</h3>
+    <p>Divulgue animais encontrados e facilite o reconhecimento.</p>
+  </a>
+  <a class="category-card adopt" href="{% url 'adotar_focinho' %}">
+    <span>💙</span>
+    <h3>Adotar Focinho</h3>
+    <p>Encontre pets prontos para receber cuidado e amor.</p>
+  </a>
+</section>
+
+<section class="section-head">
+  <div>
+    <span class="eyebrow">Vitrine da comunidade</span>
+    <h2>Publicações recentes</h2>
+  </div>
+  <a class="text-link" href="{% url 'galeria_pets' %}">Ver todos</a>
+</section>
+<section class="pet-grid">
+  {% for pet in recentes %}
+    {% include 'pets/partials/card.html' %}
+  {% empty %}
+    <div class="empty-state">
+      <h3>Nenhum pet cadastrado ainda</h3>
+      <p>Entre na comunidade e seja a primeira pessoa a publicar.</p>
+      <a class="btn btn-primary" href="{% url 'cadastrar_pet' %}">Cadastrar Pet</a>
+    </div>
+  {% endfor %}
+</section>
+{% endblock %}

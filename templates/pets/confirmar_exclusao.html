@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Excluir Publicação | PetHelp{% endblock %}
+{% block content %}
+<section class="center-page">
+  <div class="confirm-card">
+    <span class="eyebrow">Confirmação</span>
+    <h1>Excluir publicação?</h1>
+    <p>Esta ação remove definitivamente a publicação de {{ pet.nome }} da galeria do PetHelp.</p>
+    <form method="post" class="action-row">
+      {% csrf_token %}
+      <button class="btn btn-danger" type="submit">Excluir</button>
+      <a class="btn btn-ghost" href="{% url 'detalhe_pet' pet.pk %}">Cancelar</a>
+    </form>
+  </div>
+</section>
+{% endblock %}

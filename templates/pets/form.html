@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}{% if modo == 'editar' %}Editar Pet{% else %}Cadastrar Pet{% endif %} | PetHelp{% endblock %}
+{% block content %}
+<section class="form-layout">
+  <div class="form-intro paw-bg">
+    <span class="eyebrow">{% if modo == 'editar' %}Atualizar publicação{% else %}Nova publicação{% endif %}</span>
+    <h1>{% if modo == 'editar' %}Edite os dados do pet{% else %}Cadastrar Pet{% endif %}</h1>
+    <p>Quanto mais claro for o cadastro, maior a chance de alguém reconhecer, ajudar ou se apaixonar por esse focinho.</p>
+    <div class="preview-box">
+      <img id="image-preview" src="{% if pet and pet.foto %}{{ pet.foto.url }}{% endif %}" alt="Preview da foto do pet">
+      <span id="preview-placeholder">Preview da foto</span>
+    </div>
+  </div>
+  <form class="form-card" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="action-row">
+      <button class="btn btn-primary" type="submit">{% if modo == 'editar' %}Salvar alterações{% else %}Publicar Pet{% endif %}</button>
+      <a class="btn btn-ghost" href="{% url 'galeria_pets' %}">Cancelar</a>
+    </div>
+  </form>
+</section>
+{% endblock %}

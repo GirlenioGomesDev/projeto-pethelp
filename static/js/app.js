@@ -1,27 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const counters = document.querySelectorAll('.stat-number');
+  const fileInput = document.querySelector('input[type="file"][name="foto"]');
+  const preview = document.querySelector('#image-preview');
+  const placeholder = document.querySelector('#preview-placeholder');
 
-  counters.forEach((counter) => {
-    const target = Number(counter.dataset.count || 0);
-    const duration = 900;
-    const start = performance.now();
+  if (preview && preview.getAttribute('src')) {
+    preview.style.display = 'block';
+    if (placeholder) placeholder.style.display = 'none';
+  }
 
-    const tick = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      counter.textContent = Math.round(target * eased);
+  if (fileInput && preview) {
+    fileInput.addEventListener('change', () => {
+      const [file] = fileInput.files;
+      if (!file) return;
 
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      }
-    };
-
-    requestAnimationFrame(tick);
-  });
-
-  document.querySelectorAll('form').forEach((form) => {
-    form.addEventListener('submit', () => {
-      form.classList.add('is-loading');
+      preview.src = URL.createObjectURL(file);
+      preview.style.display = 'block';
+      if (placeholder) placeholder.style.display = 'none';
     });
+  }
+
+  document.querySelectorAll('.message').forEach((message) => {
+    setTimeout(() => {
+      message.style.opacity = '0';
+      message.style.transform = 'translateY(-6px)';
+    }, 4800);
   });
 });
