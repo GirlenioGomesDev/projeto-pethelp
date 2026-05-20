@@ -8,8 +8,8 @@ from .models import Pet
 
 
 def pode_gerenciar(user, pet):
-    # Dono da publicacao e equipe/admin podem moderar o conteudo.
-    return user.is_authenticated and (user == pet.usuario or user.is_staff or user.is_superuser)
+    # Apenas o dono da publicacao e o superadmin podem alterar/remover.
+    return user.is_authenticated and (user == pet.usuario or user.is_superuser)
 
 
 def filtrar_pets(request, queryset=None):
@@ -126,5 +126,5 @@ def excluir_pet(request, pk):
 
 @login_required
 def minhas_publicacoes(request):
-    queryset = Pet.objects.all() if request.user.is_staff or request.user.is_superuser else Pet.objects.filter(usuario=request.user)
+    queryset = Pet.objects.all() if request.user.is_superuser else Pet.objects.filter(usuario=request.user)
     return render(request, 'pets/minhas_publicacoes.html', {'pets': filtrar_pets(request, queryset)})

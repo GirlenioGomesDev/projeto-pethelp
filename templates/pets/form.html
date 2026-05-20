@@ -20,4 +20,40 @@
     </div>
   </form>
 </section>
+<script>
+  const categoryField = document.getElementById('id_categoria');
+  const dateField = document.getElementById('id_data_perdido');
+  const dateLabel = document.querySelector('label[for="id_data_perdido"]');
+  const phoneField = document.getElementById('id_telefone');
+
+  function updateDateLabel() {
+    if (!categoryField || !dateField || !dateLabel) return;
+
+    const selectedCategory = categoryField.value || 'perdido';
+    const label = dateField.dataset[`label${selectedCategory.charAt(0).toUpperCase()}${selectedCategory.slice(1)}`];
+
+    if (label) {
+      dateLabel.textContent = `${label}:`;
+    }
+  }
+
+  function formatPhone(value) {
+    const numbers = value.replace(/\D/g, '').slice(0, 11);
+
+    if (numbers.length <= 2) return numbers;
+    if (numbers.length <= 7) return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7)}`;
+  }
+
+  function updatePhoneMask() {
+    if (!phoneField) return;
+    phoneField.value = formatPhone(phoneField.value);
+  }
+
+  updateDateLabel();
+  categoryField?.addEventListener('change', updateDateLabel);
+  updatePhoneMask();
+  phoneField?.addEventListener('input', updatePhoneMask);
+</script>
 {% endblock %}

@@ -36,5 +36,13 @@ class Pet(models.Model):
         verbose_name = 'pet'
         verbose_name_plural = 'pets'
 
+    def get_data_perdido_label(self):
+        labels = {
+            'perdido': 'Data em que desapareceu',
+            'encontrado': 'Data em que foi encontrado',
+            'adocao': 'Data de entrada para adoção',
+        }
+        return labels.get(self.categoria, 'Data')
+
     def __str__(self):
         return f'{self.nome} - {self.get_categoria_display()}'

@@ -3,8 +3,8 @@
 {% block content %}
 <section class="page-hero compact paw-bg">
   <span class="eyebrow">Painel</span>
-  <h1>{% if user.is_staff or user.is_superuser %}Moderação de publicações{% else %}Minhas publicações{% endif %}</h1>
-  <p>{% if user.is_staff or user.is_superuser %}Como admin, você pode editar e excluir qualquer publicação cadastrada.{% else %}Edite ou exclua apenas as publicações criadas por você.{% endif %}</p>
+  <h1>{% if user.is_superuser %}Moderação de publicações{% else %}Minhas publicações{% endif %}</h1>
+  <p>{% if user.is_superuser %}Como superadmin, você pode editar e excluir qualquer publicação cadastrada.{% else %}Edite ou exclua apenas as publicações criadas por você.{% endif %}</p>
   <a class="btn btn-primary" href="{% url 'cadastrar_pet' %}">Cadastrar Pet</a>
 </section>
 <section class="pet-grid">

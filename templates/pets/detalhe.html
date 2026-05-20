@@ -14,7 +14,7 @@
       <div><small>Porte</small><strong>{{ pet.get_porte_display }}</strong></div>
       <div><small>Bairro</small><strong>{{ pet.bairro }}</strong></div>
       <div><small>Cidade</small><strong>{{ pet.cidade }}</strong></div>
-      <div><small>Data em que desapareceu</small><strong>{{ pet.data_perdido|date:'d/m/Y'|default:'Não se aplica' }}</strong></div>
+      <div><small>{{ pet.get_data_perdido_label }}</small><strong>{{ pet.data_perdido|date:'d/m/Y'|default:'Não se aplica' }}</strong></div>
       <div><small>Telefone de contato</small><strong>{{ pet.telefone }}</strong></div>
       <div><small>Publicado por</small><strong>{{ pet.usuario.first_name|default:pet.usuario.username }}</strong></div>
     </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="action-row">
       <a class="btn btn-ghost" href="{% url 'galeria_pets' %}">Voltar</a>
-      {% if user.is_authenticated and user == pet.usuario or user.is_staff or user.is_superuser %}
+      {% if user.is_authenticated and user == pet.usuario or user.is_superuser %}
         <a class="btn btn-soft" href="{% url 'editar_pet' pet.pk %}">Editar</a>
         <a class="btn btn-danger" href="{% url 'excluir_pet' pet.pk %}">Excluir</a>
       {% endif %}
